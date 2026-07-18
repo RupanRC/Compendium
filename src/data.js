@@ -28,7 +28,7 @@ export const timeline = [
   { year: '2019', phase: 'FIGHTER-JET SIMULATOR', note: 'Deployed at a national aeronautics R&D agency. VR simulator for an indigenous fighter — HUD shaders, cockpit physics, hand tracking. Team lead.' },
   { year: '2021', phase: 'AVIONICS DISPLAYS', note: 'ARINC 661 cockpit display systems in C and OpenGL for indigenous fighter programs. Low-latency symbology, multi-partition displays.' },
   { year: '2024', phase: 'PROJECT MANAGER', note: 'MicroGenesis TechSoft. Technical manager across GIS, robotics and real-time programs at national defense R&D labs.' },
-  { year: '2025', phase: 'AI PLATFORM ARCHITECT', note: 'Designing and shipping agentic AI systems — an AI-SDLC orchestration platform, RAG pipelines for flight telemetry, AR inspection products. Ten-x personal throughput, verified by tests.' },
+  { year: '2025', phase: 'AI PLATFORM ARCHITECT', note: 'Designing and shipping agentic AI systems — an AI-SDLC orchestration platform, RAG pipelines for flight telemetry, AR inspection products.' },
 ]
 
 export const doctrine = [
@@ -59,8 +59,8 @@ export const doctrine = [
   },
   {
     id: 'SHIP',
-    title: 'Velocity is a habit',
-    body: 'Nine feature updates in a day. Three phases of a platform rebuild in a weekend. Sustained, not heroic — the system makes the pace.',
+    title: 'Ship in small, verified steps',
+    body: 'Features land as small increments behind gates, each verified before the next begins. Pace comes from the system — automation, tests and tooling — never from heroics.',
   },
 ]
 
@@ -93,7 +93,7 @@ export const projects = [
       'Unity + MRTK3 headset build and ARCore tablet port at full feature parity — verified on physical hardware',
       'Test-driven from the first commit — EditMode and Play-mode E2E suites',
       'Failure → rework → re-inspection workflow with first-pass-yield and scrap-rate analytics',
-      'Nine feature updates shipped in a single day on client feedback',
+      'Real-time sync with reconnect resilience and offline retry queues for factory-floor conditions',
     ],
     stack: ['Unity', 'MRTK3', 'ARCore', 'C#', 'React', 'Express', 'SQLite'],
   },
@@ -195,13 +195,13 @@ export const projects = [
     accent: 'amber',
     name: 'Air-Gap Data Exchange PoC',
     period: '2026',
-    role: 'Built end-to-end in one day',
+    role: 'Solution architect',
     description:
       'A complete architecture for moving reviewed data between an offline system and a common server — packaging, auth envelopes, and field-level diff review on both ends — with a working sample application and full documentation.',
     highlights: [
       'ARINC-style change-set packaging with authentication envelopes',
       'File-driven generic UI renderer with editable working copies',
-      'Architecture deck, file-format spec and demo script shipped same day',
+      'Architecture deck, file-format spec and demo script included',
     ],
     stack: ['TypeScript', 'Vite', 'Custom file formats'],
   },
