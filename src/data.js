@@ -3,7 +3,7 @@
 export const profile = {
   name: 'Rupan Chakkaravarthy E',
   callsign: 'RUPAN C.E',
-  role: 'Senior Engineer · Project Manager · AI Platform Architect',
+  role: 'Technical Lead — Solutions',
   tagline: 'From cockpits to agents.',
   summary:
     'Ten years building systems where failure is visible immediately — fighter-jet simulators, ARINC 661 cockpit displays, XR hardware integration. Now applying that same discipline to AI: multi-agent orchestration platforms that take software from spec to merged, tested code with humans on the approval gates.',
@@ -16,7 +16,7 @@ export const profile = {
 
 export const stats = [
   { value: '10', unit: 'YRS', label: 'ENGINEERING' },
-  { value: '850', unit: 'TESTS', label: 'GREEN · ONE PLATFORM' },
+  { value: '20+', unit: 'SYSTEMS', label: 'DELIVERED · DEFENSE TO AI' },
   { value: '8', unit: 'AGENTS', label: 'ORCHESTRATED IN PARALLEL' },
   { value: '18', unit: 'DAYS', label: 'REPO → SELF-RUNNING PLATFORM' },
   { value: '110+', unit: 'TASKS', label: 'SHIPPED PER WEEK' },
@@ -40,7 +40,7 @@ export const doctrine = [
   {
     id: 'TDD',
     title: 'Tests are the contract',
-    body: 'TDD by default — EditMode suites in Unity, E2E in the browser, regression packs on platforms. Work is done when the suite is green twice in a row, not when it looks done.',
+    body: 'TDD by default — EditMode suites in Unity, E2E in the browser, regression packs on platforms. Work is done when the suite is green, not when it looks done.',
   },
   {
     id: 'HW',
@@ -77,7 +77,7 @@ export const projects = [
       'Dependency-wave scheduler running up to 8 Claude agents in isolated git worktrees',
       'Automated browser testing verifies every acceptance criterion — it caught a real data-loss defect, and the system fixed itself',
       'Code-knowledge-graph layer so agents consult a graph instead of re-reading files',
-      'Local-model routing (Ollama-class) for on-premise deployment; 850 tests green, twice in a row',
+      'Local-model routing (Ollama-class) for fully on-premise deployment',
     ],
     stack: ['TypeScript', 'Node.js', 'Claude Agents', 'SSE', 'Knowledge Graphs', 'Ollama'],
   },
@@ -91,7 +91,7 @@ export const projects = [
       'Mixed-reality inspection for manufacturing lines: an in-headset HUD walks operators through dynamic checklists, with a management portal for evidence, analytics and rework traceability.',
     highlights: [
       'Unity + MRTK3 headset build and ARCore tablet port at full feature parity — verified on physical hardware',
-      '64/64 EditMode + 7/7 Play-mode E2E tests; TDD from the first commit',
+      'Test-driven from the first commit — EditMode and Play-mode E2E suites',
       'Failure → rework → re-inspection workflow with first-pass-yield and scrap-rate analytics',
       'Nine feature updates shipped in a single day on client feedback',
     ],
@@ -161,6 +161,21 @@ export const projects = [
     stack: ['React', 'Vite', 'Node.js', 'Scraping', 'xlsx tooling'],
   },
   {
+    tag: 'MARITIME · GIS',
+    accent: 'cyan',
+    name: 'IMSAS — Indian Maritime Situational Awareness System',
+    period: '2021–23',
+    role: 'Senior engineer',
+    description:
+      'GIS-based situational awareness system for maritime operations — a real-time common operating picture built on a distributed event-streaming backbone.',
+    highlights: [
+      'Qt / C++ GIS front end rendering live tracks and layered maritime data',
+      'PostgreSQL-backed data store for tracks, geodata and mission records',
+      'Kafka and RabbitMQ event streaming for real-time data distribution across consoles',
+    ],
+    stack: ['Qt', 'C++', 'PostgreSQL', 'Kafka', 'RabbitMQ', 'GIS'],
+  },
+  {
     tag: 'ERGONOMICS',
     accent: 'cyan',
     name: 'Real-Time Pilot Ergonomics',
@@ -195,25 +210,29 @@ export const projects = [
 // Personal experiments and open tooling — the after-hours hangar.
 export const lab = [
   {
-    name: 'Codanium',
-    desc: 'Full-service AI software delivery platform — 20+ specialized agents run the whole SDLC behind a PM gatekeeper, with a Tauri desktop IDE companion.',
-    stack: 'Next.js 16 · Prisma · Tauri v2 · BullMQ',
-  },
-  {
     name: 'Plethora',
     desc: 'ADHD-aware daily companion — a proactive coaching agent that keeps every task primed with reward, reason and gentle consequences.',
     stack: 'Next.js 15 · Neon Postgres · LLM tool-calling',
   },
-  {
-    name: 'Hermes Workspace',
-    desc: 'Web command center for the open-source hermes-agent: chat, memory browser, skills marketplace, and a persistent multi-agent swarm mode.',
-    stack: 'Node 22 · Docker · tmux swarms',
-  },
-  {
-    name: 'Free-CC',
-    desc: 'A protocol proxy that routes Claude Code and Codex traffic to any of 24 LLM backends with streaming, tool-use and per-model routing.',
-    stack: 'Python 3.14 · strict CI · semver discipline',
-  },
+]
+
+// Complete mission index — every system on the record.
+export const archive = [
+  { name: 'Bomb-Drop Trajectory Simulation', desc: 'Weapon-release trajectory playback in FlightGear and Unity driven by real trajectory data.', tags: 'FlightGear · Unity' },
+  { name: 'Fighter-Jet Sensors Simulation', desc: 'Multi-monitor, multi-window sensor simulation with FlightGear and XLIB on Ubuntu.', tags: 'FlightGear · XLIB · Linux' },
+  { name: 'Synthetic Terrain', desc: 'Shader development for synthetic terrain generation in FlightGear.', tags: 'GLSL · FlightGear' },
+  { name: 'Lane Detection Integration', desc: 'Python computer-vision lane detection wired into FlightGear via C/C++.', tags: 'Python · OpenCV · C++' },
+  { name: 'UDP Video Streaming', desc: 'Screen and window capture encoded with OpenCV and streamed over UDP protocols.', tags: 'C++ · OpenCV · UDP' },
+  { name: 'Multi-Region Large-Area Display', desc: 'Windows C++ display-wall software with interchangeable touch-driven pages.', tags: 'C++ · Touch UI' },
+  { name: 'ECFM LRU', desc: 'Test-case generation and component testing for a real-time airworthy unit; Ada integrated with C++ over DLLs and network protocols.', tags: 'Ada · C++ · Avionics' },
+  { name: 'AUV Software (ECA A9)', desc: 'Autonomous underwater vehicle software on the ROS2 / NAV2 stack.', tags: 'ROS2 · NAV2 · Robotics' },
+  { name: 'LIDAR Point-Cloud VR', desc: 'Drone-captured LIDAR point clouds brought into real-time VR walkthroughs, with MIT Chennai.', tags: 'Unity · LIDAR · VR' },
+  { name: 'Self-Hosted LLM Backend', desc: 'Multimodal LLM management backend plus an open-source chat platform with user and model access control, deployed via Docker.', tags: 'Docker · Ollama · LLM Ops' },
+  { name: 'AI Pair-Programming Rollout', desc: 'Open-source AI agent plugins in VS Code wired to local LLMs — code generation, autocomplete and in-IDE chat for the team.', tags: 'VS Code · Local LLMs' },
+  { name: 'Self-Hosted Video Conferencing', desc: 'Low-latency Google Meet alternative deployed via Docker for real-time communication.', tags: 'Docker · WebRTC' },
+  { name: 'MMORPG PC VR Game', desc: 'Building systems, procedural terrain generation and networking modules for a VR MMORPG, with a Canadian PhD researcher.', tags: 'Unity · Networking' },
+  { name: 'Museum Interactives', desc: 'Puli-Meka turn-based multiplayer strategy game with AI for an archaeological museum, a 4-way multi-user touch table, and a VR 360° annotated tour.', tags: 'Unity · Touch · VR' },
+  { name: 'AR Sketch (SLAM)', desc: 'AR drawing application anchoring sketches in real-world space with SLAM.', tags: 'ARCore · SLAM' },
 ]
 
 export const systems = [

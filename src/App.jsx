@@ -13,6 +13,7 @@ import {
   doctrine,
   projects,
   lab,
+  archive,
   systems,
 } from './data.js'
 
@@ -154,7 +155,7 @@ function Hero() {
           transition={{ delay: 0.5 }}
           className="readout mb-4 text-xs text-phosphor"
         >
-          PERSONNEL FILE // SENIOR ENGINEER · PROJECT MANAGER · AI PLATFORM ARCHITECT
+          PERSONNEL FILE // TECHNICAL LEAD — SOLUTIONS
         </motion.p>
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
@@ -335,6 +336,41 @@ function Missions() {
           <ProjectCard key={p.name} p={p} i={i} />
         ))}
       </div>
+
+      {/* full mission index */}
+      <motion.div
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: '-60px' }}
+        className="mt-16"
+      >
+        <div className="mb-6 flex items-baseline gap-3">
+          <span className="readout text-[10px] text-phosphor">ARCHIVE</span>
+          <h3 className="font-display text-lg font-semibold uppercase tracking-wider text-paper">
+            Full Mission Index
+          </h3>
+          <div className="h-px flex-1 bg-line" />
+        </div>
+        <div className="grid gap-x-8 gap-y-5 sm:grid-cols-2 lg:grid-cols-3">
+          {archive.map((a, i) => (
+            <motion.div
+              key={a.name}
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ delay: (i % 3) * 0.06, duration: 0.4 }}
+              className="border-l border-line pl-4"
+            >
+              <div className="font-display text-sm font-semibold uppercase tracking-wide text-paper">
+                {a.name}
+              </div>
+              <p className="mt-1 text-[13px] leading-snug text-dim">{a.desc}</p>
+              <div className="readout mt-1.5 text-[10px] text-phosphor/70">{a.tags}</div>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
     </Section>
   )
 }
