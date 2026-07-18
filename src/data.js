@@ -18,7 +18,7 @@ export const stats = [
   { value: '10', unit: 'YRS', label: 'ENGINEERING' },
   { value: '20+', unit: 'SYSTEMS', label: 'DELIVERED · DEFENSE TO AI' },
   { value: '8', unit: 'AGENTS', label: 'ORCHESTRATED IN PARALLEL' },
-  { value: '18', unit: 'DAYS', label: 'REPO → SELF-RUNNING PLATFORM' },
+  { value: '5', unit: 'DOMAINS', label: 'DEFENSE · XR · AI · GIS · WEB' },
   { value: '110+', unit: 'TASKS', label: 'SHIPPED PER WEEK' },
 ]
 
@@ -72,7 +72,7 @@ export const projects = [
     period: '2026',
     role: 'Architect & sole builder',
     description:
-      'An orchestration platform that drives AI coding agents through a full spec → plan → implement → review → QA pipeline with human approval gates. Fresh repository to a self-running, self-validating system in 18 days.',
+      'An orchestration platform that drives AI coding agents through a full spec → plan → implement → review → QA pipeline with human approval gates — self-running and self-validating.',
     highlights: [
       'Dependency-wave scheduler running up to 8 Claude agents in isolated git worktrees',
       'Automated browser testing verifies every acceptance criterion — it caught a real data-loss defect, and the system fixed itself',
