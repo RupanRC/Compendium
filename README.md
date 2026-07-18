@@ -1,5 +1,7 @@
 # Compendium
 
+**Live: [rupanrc.vercel.app](https://rupanrc.vercel.app)**
+
 Portfolio of **Rupan Chakkaravarthy E** — Senior Engineer · Project Manager · AI Platform Architect.
 
 *From cockpits to agents:* ten years of fighter-jet simulators, ARINC 661 avionics displays and XR hardware, now building multi-agent AI orchestration platforms that ship production software.
