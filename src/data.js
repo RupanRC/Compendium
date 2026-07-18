@@ -254,7 +254,7 @@ export const systems = [
   {
     code: 'SYS-04',
     name: 'Web & Platform',
-    items: ['TypeScript · React · Vite', 'Node.js · Express · SSE', 'SQLite · MySQL · MSSQL', 'Tailwind · design systems', 'Auth — scrypt, HMAC, RBAC'],
+    items: ['TypeScript · React · Vite', 'Node.js · Express · SSE', 'FastAPI · Python services', 'Tauri v2 desktop apps', 'SQLite · MySQL · MSSQL', 'Tailwind · design systems', 'Auth — scrypt, HMAC, RBAC'],
   },
   {
     code: 'SYS-05',
