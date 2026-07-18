@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cp \"/c/Users/RUPANR~1/AppData/Local/Temp/claude/C--RC-Projects-Rupan-Portfolio/7b450758-13cd-42b2-a912-d91c3579c00b/scratchpad/resume.pdf\" \"/c/RC/Projects/Rupan-Portfolio/public/Rupan_Resume_Jul_2026.pdf\" && ls \"/c/RC/Projects/Rupan-Portfolio/public\")"
+    ]
+  }
+}

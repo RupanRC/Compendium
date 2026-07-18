@@ -444,6 +444,9 @@ function Comms() {
             <div className="flex items-center gap-3 text-paper">
               <span className="text-[10px] text-phosphor">BASE</span> {profile.location}
             </div>
+            <a href="/Rupan_Resume_Jul_2026.pdf" download className="flex items-center gap-3 text-paper transition-colors hover:text-amber">
+              <span className="text-[10px] text-phosphor">FILE</span> Download resume (PDF)
+            </a>
           </div>
         </div>
       </motion.div>
