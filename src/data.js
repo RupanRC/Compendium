@@ -19,7 +19,7 @@ export const stats = [
   { value: '20+', unit: 'SYSTEMS', label: 'DELIVERED · DEFENSE TO AI' },
   { value: '8', unit: 'AGENTS', label: 'ORCHESTRATED IN PARALLEL' },
   { value: '5', unit: 'DOMAINS', label: 'DEFENSE · XR · AI · GIS · WEB' },
-  { value: '110+', unit: 'TASKS', label: 'SHIPPED PER WEEK' },
+  { value: '9+', unit: 'DEVICES', label: 'XR HARDWARE INTEGRATED' },
 ]
 
 export const timeline = [
@@ -60,7 +60,7 @@ export const doctrine = [
   {
     id: 'SHIP',
     title: 'Velocity is a habit',
-    body: 'Nine feature updates in a day. Three phases of a platform rebuild in a weekend. Zero to client-ready in three weeks. Sustained, not heroic — the system makes the pace.',
+    body: 'Nine feature updates in a day. Three phases of a platform rebuild in a weekend. Sustained, not heroic — the system makes the pace.',
   },
 ]
 
@@ -86,7 +86,7 @@ export const projects = [
     accent: 'cyan',
     name: 'Qualia — AR Quality Inspection',
     period: '2026',
-    role: 'Product engineer, zero → client-ready in 3 weeks',
+    role: 'Product engineer',
     description:
       'Mixed-reality inspection for manufacturing lines: an in-headset HUD walks operators through dynamic checklists, with a management portal for evidence, analytics and rework traceability.',
     highlights: [
