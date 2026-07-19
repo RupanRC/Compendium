@@ -156,7 +156,7 @@ export const projects = [
     highlights: [
       'App-level auth hardening and maintenance-mode infrastructure',
       'Scraping matrix across suppliers and aggregators',
-      '5,692-hour costed delivery plan with market-rate modeling',
+      'Costed delivery plan with market-rate modeling',
     ],
     stack: ['React', 'Vite', 'Node.js', 'Scraping', 'xlsx tooling'],
   },
