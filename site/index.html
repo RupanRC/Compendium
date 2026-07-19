@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rupan Chakkaravarthy E — Technical Lead, Solutions · From Cockpits to Agents</title>
+<meta name="description" content="Ten years building systems where failure is visible immediately — fighter-jet simulators, ARINC 661 cockpit displays, XR hardware. Now: multi-agent AI orchestration platforms.">
+<meta property="og:title" content="Rupan Chakkaravarthy E — From Cockpits to Agents">
+<meta property="og:description" content="Technical Lead, Solutions — ten years across fighter-jet simulators, ARINC 661 cockpit displays, and XR hardware. Now building multi-agent AI orchestration platforms.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://rupanrc.vercel.app/assets/aircraft/hero-premium.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://rupanrc.vercel.app/assets/aircraft/hero-premium.jpg">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<style>
+:root{
+  --platinum:#ececec; --porcelain:#f4f4f4; --alabaster:#d9d9d9;
+  --ash:#8d8d8d; --charcoal:#5a5a5a; --gunmetal:#414141; --black:#141414;
+  --cyan:#2fd6e0; --cyan-ink:#0e7d84; --amber:#ff9d2e;
+  --line:rgba(20,20,20,.14); --line-strong:rgba(20,20,20,.32);
+  --line-dark:rgba(255,255,255,.12);
+  --ease:cubic-bezier(.16,1,.3,1);
+  --display:'Archivo',sans-serif; --body:'Inter',sans-serif; --mono:'JetBrains Mono',monospace;
+  --maxw:1320px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--platinum);color:var(--black);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--cyan);color:var(--black)}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button{font:inherit;background:none;border:none;cursor:pointer;color:inherit}
+a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--cyan-ink);outline-offset:3px;border-radius:1px}
+.contact a:focus-visible,.contact button:focus-visible{outline-color:var(--cyan)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 40px}
+.mono{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.cyan{color:var(--cyan-ink)}
+h1,h2,h3{font-family:var(--display);text-transform:uppercase;line-height:.94;letter-spacing:-.01em}
+
+/* ---- fixed chrome: progress + grain ---- */
+.progress{position:fixed;top:0;left:0;height:2px;width:0%;z-index:130;background:linear-gradient(90deg,var(--cyan),var(--amber));box-shadow:0 0 12px rgba(47,214,224,.55)}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:120;opacity:.05;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* ---- nav ---- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;border-bottom:1px solid transparent;transition:background .4s var(--ease),border-color .4s,padding .4s}
+.nav-inner{max-width:var(--maxw);margin:0 auto;padding:18px 40px;display:flex;align-items:center;justify-content:space-between;gap:24px;transition:padding .4s var(--ease)}
+.nav.solid{background:rgba(236,236,236,.88);backdrop-filter:blur(14px);border-bottom-color:var(--line)}
+.nav.solid .nav-inner{padding-top:12px;padding-bottom:12px}
+.nav-logo{display:flex;align-items:baseline;gap:10px;font-family:var(--display);font-weight:900;font-size:17px;text-transform:uppercase;letter-spacing:.02em}
+.nav-logo .sq{width:9px;height:9px;background:var(--black);align-self:center;transition:background .3s}
+.nav-logo:hover .sq{background:var(--cyan)}
+.nav-logo .sub{font-family:var(--mono);font-size:9px;letter-spacing:.18em;color:var(--charcoal);font-weight:400}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gunmetal);position:relative;padding:4px 0}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--cyan-ink);transition:width .35s var(--ease)}
+.nav-links a:hover{color:var(--black)} .nav-links a:hover::after{width:100%}
+.nav-cta{border:1px solid var(--black);padding:9px 18px !important;color:var(--black) !important;transition:.3s var(--ease)}
+.nav-cta::after{display:none}
+.nav-cta:hover{background:var(--black);color:var(--platinum) !important}
+.nav-burger{display:none;flex-direction:column;gap:5px;padding:10px;min-width:44px;min-height:44px;align-items:center;justify-content:center}
+.nav-burger span{width:22px;height:2px;background:var(--black);transition:.3s var(--ease)}
+
+/* ---- hero ---- */
+.hero{position:relative;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;justify-content:flex-end;padding-top:110px;overflow:hidden;isolation:isolate}
+.hero-grid-bg{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.5;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:120px 120px;mask-image:linear-gradient(180deg,transparent,black 18%,black 82%,transparent)}
+.hero-top{position:relative;z-index:2;display:grid;grid-template-columns:1.35fr .9fr;gap:48px;align-items:end;flex:1;padding-bottom:56px}
+.hero-kicker{display:flex;align-items:center;gap:12px;color:var(--charcoal);margin-bottom:26px}
+.hero-kicker .dot{width:7px;height:7px;background:var(--cyan-ink);animation:glowpulse 2.6s ease-in-out infinite}
+@keyframes glowpulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(47,214,224,.5)}50%{opacity:.55;box-shadow:0 0 0 7px rgba(47,214,224,0)}}
+.hero h1{font-size:clamp(52px,8.2vw,124px);font-weight:900}
+.hero h1 .line{display:block;overflow:hidden}
+.hero h1 .line>span{display:inline-block;transform:translateY(110%);animation:riseup 1s var(--ease) forwards}
+.hero h1 .line:nth-child(2)>span{animation-delay:.12s}
+.hero h1 .line:nth-child(3)>span{animation-delay:.24s}
+@keyframes riseup{to{transform:translateY(0)}}
+.hero h1 .outline{color:transparent;-webkit-text-stroke:2px var(--black);transition:.45s var(--ease)}
+.hero h1 .outline:hover{color:var(--cyan);-webkit-text-stroke:2px transparent;text-shadow:0 0 34px rgba(47,214,224,.45)}
+.hero-sub{max-width:520px;margin-top:30px;color:var(--gunmetal);font-size:16.5px}
+.hero-sub strong{color:var(--black);font-weight:600}
+.hero-ctas{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:14px 24px;border:1px solid var(--black);transition:.35s var(--ease)}
+.btn.solid{background:var(--black);color:var(--platinum)}
+.btn.solid:hover{background:var(--cyan-ink);border-color:var(--cyan-ink);color:#fff;box-shadow:0 10px 30px -8px rgba(14,125,132,.55)}
+.btn.ghost:hover{background:var(--black);color:var(--platinum)}
+.btn .arr{transition:transform .35s var(--ease)} .btn:hover .arr{transform:translateX(4px)}
+/* jet panel */
+.hero-visual{position:relative}
+.jet-frame{position:relative;border:1px solid var(--line-strong);background:var(--porcelain);padding:10px}
+.jet-frame .jet-stage{position:relative;overflow:hidden}
+.jet-frame img{width:100%;height:auto;filter:saturate(1.05) contrast(1.03)}
+.jet-inner{animation:jhover 7.5s ease-in-out infinite}
+@keyframes jhover{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-12px) rotate(-.4deg)}}
+.jet-frame .hud-corner{position:absolute;width:14px;height:14px;border:1.5px solid var(--black)}
+.hud-corner.tl{top:-1px;left:-1px;border-right:0;border-bottom:0}
+.hud-corner.tr{top:-1px;right:-1px;border-left:0;border-bottom:0}
+.hud-corner.bl{bottom:-1px;left:-1px;border-right:0;border-top:0}
+.hud-corner.br{bottom:-1px;right:-1px;border-left:0;border-top:0}
+.jet-meta{display:flex;justify-content:space-between;padding-top:10px;color:var(--charcoal)}
+/* hudscan sweep on image hover */
+.hudscan{position:relative;overflow:hidden}
+.hudscan::before{content:"";position:absolute;left:0;right:0;height:34%;top:-40%;z-index:3;pointer-events:none;
+  background:linear-gradient(180deg,transparent,rgba(47,214,224,.14) 42%,rgba(47,214,224,.34) 50%,rgba(47,214,224,.14) 58%,transparent);
+  transition:top 1.1s var(--ease)}
+.hudscan:hover::before{top:106%}
+.hudscan::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;opacity:0;transition:opacity .4s;
+  background-image:linear-gradient(rgba(47,214,224,.12) 1px,transparent 1px);background-size:100% 6px}
+.hudscan:hover::after{opacity:1}
+/* hero stats strip */
+.hero-stats{position:relative;z-index:2;border-top:1px solid var(--line-strong);display:grid;grid-template-columns:repeat(5,1fr)}
+.stat{padding:22px 24px 26px;border-right:1px solid var(--line);transition:background .35s var(--ease)}
+.stat:last-child{border-right:0}
+.stat:hover{background:var(--porcelain)}
+.stat .v{font-family:var(--display);font-weight:900;font-size:clamp(30px,3vw,44px);line-height:1;display:flex;align-items:baseline;gap:6px}
+.stat .v .u{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--cyan-ink)}
+.stat .l{margin-top:8px;color:var(--charcoal)}
+/* ticker */
+.ticker{border-top:1px solid var(--line-strong);border-bottom:1px solid var(--line-strong);background:var(--black);color:var(--platinum);overflow:hidden;padding:13px 0}
+.ticker-track{display:flex;gap:56px;width:max-content;animation:tick 26s linear infinite}
+.ticker:hover .ticker-track{animation-play-state:paused}
+.ticker-track span{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;white-space:nowrap;display:flex;align-items:center;gap:56px}
+.ticker-track span::after{content:"◆";font-size:7px;color:var(--cyan)}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* ---- shared section shell ---- */
+.section{padding:110px 0}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;margin-bottom:64px}
+.sec-index{color:var(--charcoal);display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.sec-index .bar{width:44px;height:1px;background:var(--line-strong)}
+.sec-title{font-size:clamp(38px,4.6vw,68px);font-weight:900}
+.sec-note{max-width:340px;color:var(--charcoal);font-size:14.5px;padding-bottom:6px}
+/* reveal on scroll */
+.rv{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}.rv.d4{transition-delay:.32s}
+</style>
+<style>
+/* ---- 01 flight log ---- */
+.log-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:start}
+.log-fig{position:sticky;top:110px}
+.log-fig .frame{border:1px solid var(--line-strong);background:var(--porcelain);padding:14px}
+.log-fig figcaption{display:flex;justify-content:space-between;padding-top:12px;color:var(--charcoal)}
+.log-list{border-top:1px solid var(--line-strong)}
+.log-row{display:grid;grid-template-columns:96px 1fr auto;gap:24px;align-items:baseline;padding:26px 8px;border-bottom:1px solid var(--line);transition:.35s var(--ease);position:relative}
+.log-row::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--cyan);transform:scaleY(0);transform-origin:top;transition:transform .35s var(--ease)}
+.log-row:hover{background:var(--porcelain);padding-left:20px}
+.log-row:hover::before{transform:scaleY(1)}
+.log-year{font-family:var(--mono);font-size:13px;letter-spacing:.1em;color:var(--charcoal)}
+.log-row:hover .log-year{color:var(--cyan-ink)}
+.log-phase{font-family:var(--display);font-weight:800;font-size:clamp(18px,1.7vw,24px);text-transform:uppercase;letter-spacing:.01em}
+.log-note{grid-column:2;color:var(--charcoal);font-size:14.5px;max-width:560px;margin-top:6px}
+.log-tag{color:var(--ash)}
+
+/* ---- dark interlude ---- */
+.interlude{position:relative;background:var(--black);color:var(--platinum);overflow:hidden;isolation:isolate}
+.interlude .bg-media{position:absolute;inset:0;z-index:0}
+.interlude .bg-media video,.interlude .bg-media img{width:100%;height:100%;object-fit:cover;opacity:.5;filter:saturate(1.1)}
+.interlude .scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(20,20,20,.86) 0%,rgba(20,20,20,.42) 46%,rgba(20,20,20,.92) 100%)}
+.interlude-inner{position:relative;z-index:2;padding:150px 0}
+.interlude .mono{color:var(--cyan)}
+.interlude blockquote{font-family:var(--display);font-weight:800;font-size:clamp(30px,4vw,58px);line-height:1.06;text-transform:uppercase;max-width:1000px;margin-top:26px}
+.interlude blockquote em{font-style:normal;color:var(--amber)}
+.interlude .attrib{margin-top:34px;color:rgba(236,236,236,.6);font-size:14.5px;max-width:560px}
+.scanline{position:absolute;left:0;right:0;height:1px;z-index:2;background:linear-gradient(90deg,transparent,rgba(47,214,224,.7),transparent);animation:scanmove 5.5s linear infinite;pointer-events:none}
+@keyframes scanmove{0%{top:-2%}100%{top:102%}}
+
+/* ---- 02 projects ---- */
+.projects{background:var(--platinum)}
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line-strong);border-left:1px solid var(--line-strong)}
+.proj-card{position:relative;border-right:1px solid var(--line-strong);border-bottom:1px solid var(--line-strong);padding:28px 26px 26px;min-height:300px;display:flex;flex-direction:column;transition:background .4s var(--ease);overflow:hidden}
+.proj-card::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:100%;background:var(--cyan);transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
+.proj-card.amber::after{background:var(--amber)}
+.proj-card:hover{background:var(--porcelain)}
+.proj-card:hover::after{transform:scaleX(1)}
+.proj-top{display:flex;justify-content:space-between;align-items:baseline;color:var(--charcoal)}
+.proj-num{font-family:var(--mono);font-size:11px;letter-spacing:.14em}
+.proj-tag{font-family:var(--mono);font-size:10px;letter-spacing:.14em;padding:5px 9px;border:1px solid var(--line-strong);color:var(--gunmetal);transition:.3s}
+.proj-card:hover .proj-tag{border-color:var(--cyan-ink);color:var(--cyan-ink)}
+.proj-card.amber:hover .proj-tag{border-color:#b96a12;color:#b96a12}
+.proj-name{font-family:var(--display);font-weight:800;font-size:clamp(19px,1.6vw,23px);text-transform:uppercase;line-height:1.05;margin-top:20px}
+.proj-meta{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--ash);margin-top:8px;text-transform:uppercase}
+.proj-desc{color:var(--charcoal);font-size:14px;margin-top:14px;flex:1}
+.proj-more{max-height:0;overflow:hidden;transition:max-height .55s var(--ease),opacity .45s;opacity:0}
+.proj-card:hover .proj-more{max-height:300px;opacity:1}
+.proj-more li{font-size:13px;color:var(--gunmetal);padding:7px 0 0 16px;position:relative}
+.proj-more li::before{content:"▸";position:absolute;left:0;color:var(--cyan-ink);font-size:11px}
+.proj-card.amber .proj-more li::before{color:#b96a12}
+.proj-stack{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.proj-stack span{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;padding:4px 8px;background:rgba(20,20,20,.06);color:var(--gunmetal)}
+
+/* ---- 03 systems tabs ---- */
+.systems{background:var(--porcelain);border-top:1px solid var(--line-strong);border-bottom:1px solid var(--line-strong)}
+.sys-grid{display:grid;grid-template-columns:400px 1fr;gap:0;border:1px solid var(--line-strong);background:var(--platinum)}
+.sys-tabs{border-right:1px solid var(--line-strong);display:flex;flex-direction:column}
+.sys-tab{display:flex;align-items:center;gap:18px;text-align:left;padding:24px 26px;border-bottom:1px solid var(--line);transition:.3s var(--ease);position:relative}
+.sys-tab:last-child{border-bottom:0}
+.sys-tab .code{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--ash);transition:.3s}
+.sys-tab .name{font-family:var(--display);font-weight:800;font-size:19px;text-transform:uppercase;flex:1}
+.sys-tab .tick{width:8px;height:8px;background:var(--alabaster);transition:.3s}
+.sys-tab:hover{background:rgba(20,20,20,.035)}
+.sys-tab.active{background:var(--black);color:var(--platinum)}
+.sys-tab.active .code{color:var(--cyan)}
+.sys-tab.active .tick{background:var(--cyan);box-shadow:0 0 12px rgba(47,214,224,.7)}
+.sys-panel{display:grid;grid-template-columns:1fr .85fr;min-height:420px}
+.sys-items{padding:36px 34px;display:flex;flex-direction:column;justify-content:center}
+.sys-items li{display:flex;gap:14px;align-items:baseline;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px;color:var(--gunmetal);opacity:0;transform:translateX(14px);animation:sysin .5s var(--ease) forwards}
+.sys-items li:last-child{border-bottom:0}
+.sys-items li::before{content:"//";font-family:var(--mono);font-size:11px;color:var(--cyan-ink)}
+.sys-items li:nth-child(1){animation-delay:.03s}.sys-items li:nth-child(2){animation-delay:.09s}
+.sys-items li:nth-child(3){animation-delay:.15s}.sys-items li:nth-child(4){animation-delay:.21s}
+.sys-items li:nth-child(5){animation-delay:.27s}.sys-items li:nth-child(6){animation-delay:.33s}
+.sys-items li:nth-child(7){animation-delay:.39s}
+@keyframes sysin{to{opacity:1;transform:none}}
+.sys-media{position:relative;border-left:1px solid var(--line-strong);overflow:hidden}
+.sys-media img{width:100%;height:100%;object-fit:cover;filter:grayscale(.25) contrast(1.04)}
+.sys-media .caption{position:absolute;left:0;right:0;bottom:0;padding:12px 16px;background:rgba(20,20,20,.82);color:var(--platinum);display:flex;justify-content:space-between;z-index:4}
+.sys-media .caption .cyan{color:var(--cyan)}
+
+/* ---- 04 doctrine ---- */
+.doc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line-strong);border-left:1px solid var(--line-strong)}
+.doc-card{border-right:1px solid var(--line-strong);border-bottom:1px solid var(--line-strong);padding:30px 28px 34px;transition:.35s var(--ease);position:relative;overflow:hidden}
+.doc-card:hover{background:var(--black);color:var(--platinum)}
+.doc-id{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--cyan-ink)}
+.doc-card:hover .doc-id{color:var(--cyan)}
+.doc-card h3{font-size:22px;font-weight:800;margin-top:16px}
+.doc-card p{color:var(--charcoal);font-size:14px;margin-top:14px;transition:.35s}
+.doc-card:hover p{color:rgba(236,236,236,.72)}
+
+/* ---- 05 archive ---- */
+.archive{background:var(--porcelain);border-top:1px solid var(--line-strong)}
+.arch-row{display:grid;grid-template-columns:52px 1.1fr 1.6fr auto;gap:22px;align-items:baseline;padding:17px 8px;border-bottom:1px solid var(--line);transition:.3s var(--ease)}
+.arch-row:hover{background:var(--platinum);padding-left:18px}
+.arch-idx{font-family:var(--mono);font-size:10.5px;color:var(--ash);letter-spacing:.1em}
+.arch-name{font-family:var(--display);font-weight:700;font-size:16.5px;text-transform:uppercase;letter-spacing:.01em}
+.arch-desc{color:var(--charcoal);font-size:13.5px}
+.arch-tags{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--ash);text-transform:uppercase;text-align:right}
+.lab-strip{margin-top:70px;border:1px solid var(--line-strong);background:var(--platinum);display:grid;grid-template-columns:auto 1fr auto;gap:28px;align-items:center;padding:26px 30px}
+.lab-badge{font-family:var(--display);font-weight:900;font-size:15px;background:var(--black);color:var(--cyan);padding:12px 16px;text-transform:uppercase}
+.lab-strip .name{font-family:var(--display);font-weight:800;font-size:20px;text-transform:uppercase}
+.lab-strip .desc{color:var(--charcoal);font-size:14px;margin-top:4px}
+.lab-strip .stack{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--gunmetal);text-transform:uppercase}
+
+/* ---- wide divider ---- */
+.wide-strip{position:relative;height:220px;overflow:hidden;border-top:1px solid var(--line-strong);border-bottom:1px solid var(--line-strong)}
+.wide-strip img{width:100%;height:100%;object-fit:cover;filter:grayscale(.35) contrast(1.05)}
+.wide-strip .tag{position:absolute;right:40px;bottom:16px;z-index:4;background:var(--black);color:var(--platinum);padding:8px 14px}
+
+/* ---- contact / footer ---- */
+.contact{background:var(--black);color:var(--platinum);padding:130px 0 0;position:relative;overflow:hidden}
+.contact .mono{color:var(--cyan)}
+.contact h2{font-size:clamp(46px,7vw,110px);font-weight:900}
+.contact h2 .em{color:transparent;-webkit-text-stroke:2px var(--platinum);transition:.4s var(--ease)}
+.contact h2 .em:hover{color:var(--amber);-webkit-text-stroke:2px transparent;text-shadow:0 0 40px rgba(255,157,46,.4)}
+.contact-row{display:grid;grid-template-columns:1.2fr .8fr;gap:60px;align-items:end;margin-top:60px;padding-bottom:100px}
+.contact-copy{color:rgba(236,236,236,.65);font-size:15.5px;max-width:480px}
+.contact-list li{display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid var(--line-dark);font-size:14px;transition:.3s var(--ease)}
+.contact-list li:hover{padding-left:10px;border-bottom-color:rgba(47,214,224,.5)}
+.contact-list .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(236,236,236,.45)}
+.contact-list a:hover{color:var(--cyan)}
+.footer{border-top:1px solid var(--line-dark);padding:26px 0}
+.footer-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:rgba(236,236,236,.45)}
+.footer-inner .mono{font-size:9.5px;color:rgba(236,236,236,.45)}
+
+/* ---- responsive ---- */
+@media(max-width:1080px){
+  .hero-top{grid-template-columns:1fr;gap:40px}
+  .hero-visual{max-width:560px}
+  .hero-stats{grid-template-columns:repeat(3,1fr)}
+  .stat:nth-child(3){border-right:0}
+  .stat:nth-child(n+4){border-top:1px solid var(--line)}
+  .log-grid{grid-template-columns:1fr}
+  .log-fig{position:static;max-width:520px}
+  .proj-grid{grid-template-columns:repeat(2,1fr)}
+  .sys-grid{grid-template-columns:1fr}
+  .sys-tabs{flex-direction:row;overflow-x:auto;border-right:0;border-bottom:1px solid var(--line-strong)}
+  .sys-tab{border-bottom:0;border-right:1px solid var(--line);white-space:nowrap;padding:16px 18px}
+  .sys-tab .name{font-size:15px}
+  .doc-grid{grid-template-columns:repeat(2,1fr)}
+  .contact-row{grid-template-columns:1fr}
+}
+@media(max-width:720px){
+  .wrap{padding:0 22px}
+  .nav-inner{padding:14px 22px}
+  .nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--platinum);flex-direction:column;justify-content:center;gap:30px;z-index:99}
+  .nav-links.open{display:flex}
+  .nav-links a{font-size:15px}
+  .nav-burger{display:flex;z-index:101}
+  .nav.open .nav-burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .nav.open .nav-burger span:nth-child(2){opacity:0}
+  .nav.open .nav-burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .hero-stats{grid-template-columns:repeat(2,1fr)}
+  .stat{border-right:0;border-top:1px solid var(--line)}
+  .stat:nth-child(-n+2){border-top:0}
+  .proj-grid{grid-template-columns:1fr}
+  .sys-panel{grid-template-columns:1fr}
+  .sys-media{min-height:240px;border-left:0;border-top:1px solid var(--line-strong)}
+  .doc-grid{grid-template-columns:1fr}
+  .arch-row{grid-template-columns:1fr;gap:6px}
+  .arch-tags{text-align:left}
+  .lab-strip{grid-template-columns:1fr}
+  .sec-head{flex-direction:column;align-items:flex-start}
+  .log-row{grid-template-columns:64px 1fr}
+  .log-tag{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
+}
+</style>
+</head>
+<body data-od-id="page-root">
+<div class="progress" id="progress" data-od-id="scroll-progress"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="nav" id="nav" data-od-id="main-nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#top" data-od-id="nav-logo"><span class="sq"></span>RUPAN C.E <span class="sub">/ TECH LEAD — SOLUTIONS</span></a>
+    <nav class="nav-links" id="navLinks" data-od-id="nav-links">
+      <a href="#log">Flight Log</a>
+      <a href="#projects">Projects</a>
+      <a href="#systems">Systems</a>
+      <a href="#doctrine">Doctrine</a>
+      <a href="#archive">Archive</a>
+      <a href="#contact" class="nav-cta" data-od-id="nav-cta-contact">Contact</a>
+    </nav>
+    <button class="nav-burger" id="burger" aria-label="Menu" data-od-id="nav-burger"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+<!-- ================= HERO ================= -->
+<section class="hero" data-od-id="hero">
+  <div class="hero-grid-bg" aria-hidden="true"></div>
+  <div class="wrap hero-top">
+    <div>
+      <div class="hero-kicker mono" data-od-id="hero-kicker"><span class="dot"></span>CHENNAI, IN — ACCEPTING NEW MISSIONS</div>
+      <h1 data-od-id="hero-headline">
+        <span class="line"><span>From</span></span>
+        <span class="line"><span>Cockpits</span></span>
+        <span class="line"><span>to <span class="outline" data-od-id="hero-word-agents">Agents.</span></span></span>
+      </h1>
+      <p class="hero-sub" data-od-id="hero-summary"><strong>Ten years building systems where failure is visible immediately</strong> — fighter-jet simulators, ARINC&nbsp;661 cockpit displays, XR hardware integration. Now applying that same discipline to AI: multi-agent orchestration platforms that take software from spec to merged, tested code with humans on the approval gates.</p>
+      <div class="hero-ctas" data-od-id="hero-ctas">
+        <a class="btn solid" href="#projects">View the squadron <span class="arr">→</span></a>
+        <a class="btn ghost" href="assets/Rupan_Resume_Jul_2026.pdf" target="_blank" rel="noopener">Resume / PDF <span class="arr">↗</span></a>
+      </div>
+    </div>
+    <div class="hero-visual rv" data-od-id="hero-jet">
+      <div class="jet-frame">
+        <span class="hud-corner tl"></span><span class="hud-corner tr"></span><span class="hud-corner bl"></span><span class="hud-corner br"></span>
+        <div class="jet-stage hudscan">
+          <div class="jet-inner">
+            <img src="assets/aircraft/hero-premium.jpg" alt="HAL Tejas fighter jet climbing steeply with a golden vapor trail against a dusk sky" width="1920" height="1080">
+          </div>
+        </div>
+        <div class="jet-meta mono"><span>FIG 01 — DELTA WING</span><span class="cyan">HUD · ONLINE</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-stats" data-od-id="hero-stats">
+    <div class="stat rv"><div class="v">10<span class="u">YRS</span></div><div class="l mono">Engineering</div></div>
+    <div class="stat rv d1"><div class="v">20+<span class="u">SYS</span></div><div class="l mono">Delivered · Defense to AI</div></div>
+    <div class="stat rv d2"><div class="v">8<span class="u">AGT</span></div><div class="l mono">Orchestrated in parallel</div></div>
+    <div class="stat rv d3"><div class="v">5<span class="u">DOM</span></div><div class="l mono">Defense · XR · AI · GIS · Web</div></div>
+    <div class="stat rv d4"><div class="v">9+<span class="u">DEV</span></div><div class="l mono">XR hardware integrated</div></div>
+  </div>
+</section>
+
+<div class="ticker" data-od-id="domain-ticker" aria-hidden="true">
+  <div class="ticker-track" id="tickerTrack">
+    <span>Fighter-jet simulators</span><span>ARINC 661 avionics</span><span>Multi-agent AI</span><span>Mixed reality</span><span>RAG pipelines</span><span>Air-gapped deployment</span><span>GIS situational awareness</span><span>Real-time systems</span>
+  </div>
+</div>
+
+<!-- ================= 01 FLIGHT LOG ================= -->
+<section class="section" id="log" data-od-id="section-flightlog">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <div class="sec-index mono"><span class="bar"></span>01 / FLIGHT LOG — CAREER SORTIES</div>
+        <h2 class="sec-title">Ten years,<br>six squadrons.</h2>
+      </div>
+      <p class="sec-note">Every phase shipped working systems — from VR cockpits at a national aeronautics agency to agent fleets that deliver software while you sleep.</p>
+    </div>
+    <div class="log-grid">
+      <figure class="log-fig rv" data-od-id="flightlog-blueprint">
+        <div class="frame hudscan">
+          <img src="assets/aircraft/hero-climb.jpg" alt="Delta-wing fighter climbing against a pale sky" width="1800" height="1192" loading="lazy" decoding="async">
+        </div>
+        <figcaption class="mono"><span>FIG 02 — SORTIE, CLIMB-OUT</span><span class="cyan">ALT UNRESTRICTED</span></figcaption>
+      </figure>
+      <div class="log-list rv d1" data-od-id="flightlog-list">
+        <div class="log-row"><span class="log-year">2016</span><h3 class="log-phase">Game &amp; VR Dev</h3><span class="log-tag mono">UNITY</span><p class="log-note">Unity, networked gameplay, first VR builds for Rift, Vive and Windows MR.</p></div>
+        <div class="log-row"><span class="log-year">2018</span><h3 class="log-phase">XR Engineer</h3><span class="log-tag mono">AR / VR</span><p class="log-note">AR/VR products and prototypes at D2VR — interactions, SLAM, museum installations.</p></div>
+        <div class="log-row"><span class="log-year">2019</span><h3 class="log-phase">Fighter-Jet Simulator</h3><span class="log-tag mono">TEAM LEAD</span><p class="log-note">Deployed at a national aeronautics R&amp;D agency. VR simulator for an indigenous fighter — HUD shaders, cockpit physics, hand tracking.</p></div>
+        <div class="log-row"><span class="log-year">2021</span><h3 class="log-phase">Avionics Displays</h3><span class="log-tag mono">ARINC 661</span><p class="log-note">ARINC 661 cockpit display systems in C and OpenGL for indigenous fighter programs. Low-latency symbology, multi-partition displays.</p></div>
+        <div class="log-row"><span class="log-year">2024</span><h3 class="log-phase">Project Manager</h3><span class="log-tag mono">MICROGENESIS</span><p class="log-note">MicroGenesis TechSoft. Technical manager across GIS, robotics and real-time programs at national defense R&amp;D labs.</p></div>
+        <div class="log-row"><span class="log-year">2025</span><h3 class="log-phase">AI Platform Architect</h3><span class="log-tag mono">AGENTIC AI</span><p class="log-note">Designing and shipping agentic AI systems — an AI-SDLC orchestration platform, RAG pipelines for flight telemetry, AR inspection products. Ten-x personal throughput, verified by tests.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DARK INTERLUDE ================= -->
+<section class="interlude" data-od-id="interlude">
+  <div class="bg-media" aria-hidden="true">
+    <img src="assets/aircraft/wide-sortie.jpg" alt="">
+  </div>
+  <div class="scrim" aria-hidden="true"></div>
+  <div class="scanline" aria-hidden="true"></div>
+  <div class="wrap interlude-inner">
+    <div class="mono rv" data-od-id="interlude-kicker">◤ MISSION STATEMENT</div>
+    <blockquote class="rv d1" data-od-id="interlude-quote">Aviation taught me checklists are not bureaucracy — <em>they are how complex systems stay survivable.</em></blockquote>
+    <p class="attrib rv d2">The same discipline now runs fleets of AI agents: spec first, tests as the contract, every merge behind a human gate with a tamper-proof audit trail.</p>
+  </div>
+</section>
+
+<!-- ================= 02 PROJECTS ================= -->
+<section class="section projects" id="projects" data-od-id="section-projects">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <div class="sec-index mono"><span class="bar"></span>02 / THE SQUADRON — SELECTED SYSTEMS</div>
+        <h2 class="sec-title">Nine aircraft<br>on the flight line.</h2>
+      </div>
+      <p class="sec-note">Production systems, not demos. Hover any airframe for its combat record — every claim below was verified on real hardware or a green test suite.</p>
+    </div>
+    <div class="proj-grid rv d1" data-od-id="project-grid">
+      <article class="proj-card amber" data-od-id="project-card-forge">
+        <div class="proj-top"><span class="proj-num">A/01</span><span class="proj-tag">AI-SDLC</span></div>
+        <h3 class="proj-name">FORGE — AI Software Delivery Platform</h3>
+        <div class="proj-meta">2026 · Architect &amp; sole builder</div>
+        <p class="proj-desc">An orchestration platform that drives AI coding agents through a full spec → plan → implement → review → QA pipeline with human approval gates — self-running and self-validating.</p>
+        <ul class="proj-more">
+          <li>Dependency-wave scheduler running up to 8 Claude agents in isolated git worktrees</li>
+          <li>Automated browser testing caught a real data-loss defect — the system fixed itself</li>
+          <li>Code-knowledge-graph layer so agents consult a graph instead of re-reading files</li>
+          <li>Local-model routing (Ollama-class) for fully on-premise deployment</li>
+        </ul>
+        <div class="proj-stack"><span>TypeScript</span><span>Node.js</span><span>Claude Agents</span><span>SSE</span><span>Knowledge Graphs</span><span>Ollama</span></div>
+      </article>
+      <article class="proj-card" data-od-id="project-card-qualia">
+        <div class="proj-top"><span class="proj-num">A/02</span><span class="proj-tag">XR · QA</span></div>
+        <h3 class="proj-name">Qualia — AR Quality Inspection</h3>
+        <div class="proj-meta">2026 · Product engineer</div>
+        <p class="proj-desc">Mixed-reality inspection for manufacturing lines: an in-headset HUD walks operators through dynamic checklists, with a management portal for evidence, analytics and rework traceability.</p>
+        <ul class="proj-more">
+          <li>Unity + MRTK3 headset build and ARCore tablet port at full feature parity — verified on physical hardware</li>
+          <li>Test-driven from the first commit — EditMode and Play-mode E2E suites</li>
+          <li>Failure → rework → re-inspection workflow with first-pass-yield and scrap-rate analytics</li>
+          <li>Nine feature updates shipped in a single day on client feedback</li>
+        </ul>
+        <div class="proj-stack"><span>Unity</span><span>MRTK3</span><span>ARCore</span><span>C#</span><span>React</span><span>Express</span><span>SQLite</span></div>
+      </article>
+      <article class="proj-card" data-od-id="project-card-flightdata">
+        <div class="proj-top"><span class="proj-num">A/03</span><span class="proj-tag">RAG · DATA</span></div>
+        <h3 class="proj-name">Flight Data Insights Platform</h3>
+        <div class="proj-meta">2025–26 · Platform engineer</div>
+        <p class="proj-desc">A telemetry-analysis portal for flight-test data: RAG-powered querying over raw .dat telemetry, natural-language-to-SQL over live databases, and video evidence pipelines — deployed fully air-gapped.</p>
+        <ul class="proj-more">
+          <li>NL→SQL (Vanna 2.0) verified live across 13 datasets on the deployed portal</li>
+          <li>Telemetry ingestion profiling 63-column .dat files with and without parameter headers</li>
+          <li>MPEG-2 and audio-only video ingest with MP4 playback proxies</li>
+          <li>Complete offline delivery: Docker images, self-contained installers, air-gap patch bundles</li>
+        </ul>
+        <div class="proj-stack"><span>Python</span><span>RAGFlow</span><span>Vanna 2.0</span><span>Ollama</span><span>React</span><span>Docker</span><span>MSSQL</span></div>
+      </article>
+      <article class="proj-card amber" data-od-id="project-card-simulator">
+        <div class="proj-top"><span class="proj-num">A/04</span><span class="proj-tag">DEFENSE · SIM</span></div>
+        <h3 class="proj-name">XR Fighter-Jet Simulator</h3>
+        <div class="proj-meta">2019–21 · Team lead</div>
+        <p class="proj-desc">Indigenous VR fighter-jet simulator built for a national aeronautics agency: full cockpit interaction, HUD symbology, environment simulation and hand tracking.</p>
+        <ul class="proj-more">
+          <li>Custom world-space-UV shaders for HUD simulation; physics-joint cockpit switches</li>
+          <li>Editor scripting auto-rigged hundreds of cockpit controls from engineering spreadsheets</li>
+          <li>Leap Motion hand-tracked interaction and 6-DOF Quest visualization</li>
+          <li>Symbology drawing scheduled across multiple cockpit display surfaces</li>
+        </ul>
+        <div class="proj-stack"><span>Unity</span><span>C#</span><span>HLSL</span><span>Leap Motion</span><span>Varjo</span><span>Oculus</span></div>
+      </article>
+      <article class="proj-card amber" data-od-id="project-card-arinc661">
+        <div class="proj-top"><span class="proj-num">A/05</span><span class="proj-tag">AVIONICS</span></div>
+        <h3 class="proj-name">Cockpit Display System (ARINC 661)</h3>
+        <div class="proj-meta">2021–23 · Team lead</div>
+        <p class="proj-desc">Certified-standard cockpit display software for indigenous fighter programs — low-latency rendering of SVG-based display pages in C and OpenGL.</p>
+        <ul class="proj-more">
+          <li>ARINC 661-compliant multi-partition dynamic displays with modular updates</li>
+          <li>Shader-based rendering for real-time graphical elements</li>
+          <li>Epiphan video capture integration with real-time cropping and UDP streaming via OpenCV</li>
+          <li>Ada ↔ C++ integration over DLLs and network protocols for airworthy test units</li>
+        </ul>
+        <div class="proj-stack"><span>C</span><span>C++</span><span>OpenGL</span><span>Ada</span><span>OpenCV</span><span>Python</span></div>
+      </article>
+      <article class="proj-card" data-od-id="project-card-supplier">
+        <div class="proj-top"><span class="proj-num">A/06</span><span class="proj-tag">DATA · OPS</span></div>
+        <h3 class="proj-name">Supplier Intelligence Platform</h3>
+        <div class="proj-meta">2025–26 · Engineer &amp; proposal architect</div>
+        <p class="proj-desc">A supplier-data aggregation platform with scraping architecture spanning 50+ sources, plus the full commercial package — WBS, staffing plan and costed SOW for a six-month, six-person engagement.</p>
+        <ul class="proj-more">
+          <li>App-level auth hardening and maintenance-mode infrastructure</li>
+          <li>Scraping matrix across suppliers and aggregators</li>
+          <li>5,692-hour costed delivery plan with market-rate modeling</li>
+        </ul>
+        <div class="proj-stack"><span>React</span><span>Vite</span><span>Node.js</span><span>Scraping</span><span>xlsx tooling</span></div>
+      </article>
+      <article class="proj-card" data-od-id="project-card-imsas">
+        <div class="proj-top"><span class="proj-num">A/07</span><span class="proj-tag">MARITIME · GIS</span></div>
+        <h3 class="proj-name">IMSAS — Maritime Situational Awareness</h3>
+        <div class="proj-meta">2021–23 · Senior engineer</div>
+        <p class="proj-desc">GIS-based situational awareness system for maritime operations — a real-time common operating picture built on a distributed event-streaming backbone.</p>
+        <ul class="proj-more">
+          <li>Qt / C++ GIS front end rendering live tracks and layered maritime data</li>
+          <li>PostgreSQL-backed data store for tracks, geodata and mission records</li>
+          <li>Kafka and RabbitMQ event streaming for real-time data distribution across consoles</li>
+        </ul>
+        <div class="proj-stack"><span>Qt</span><span>C++</span><span>PostgreSQL</span><span>Kafka</span><span>RabbitMQ</span><span>GIS</span></div>
+      </article>
+      <article class="proj-card" data-od-id="project-card-ergonomics">
+        <div class="proj-top"><span class="proj-num">A/08</span><span class="proj-tag">ERGONOMICS</span></div>
+        <h3 class="proj-name">Real-Time Pilot Ergonomics</h3>
+        <div class="proj-meta">2024–25 · Lead engineer</div>
+        <p class="proj-desc">Motion-capture-driven ergonomic analysis of pilots under high-load maneuvering — bone-data extraction, stress metrics, session playback and automated PDF reporting.</p>
+        <ul class="proj-more">
+          <li>Xsens Movella motion-capture suit integration in Unity</li>
+          <li>Timestamped posture logging with CSV/JSON export for MATLAB analysis</li>
+          <li>Auto-generated ergonomic score reports</li>
+        </ul>
+        <div class="proj-stack"><span>Unity</span><span>C#</span><span>Xsens</span><span>Data pipelines</span></div>
+      </article>
+      <article class="proj-card amber" data-od-id="project-card-airgap">
+        <div class="proj-top"><span class="proj-num">A/09</span><span class="proj-tag">SECURITY</span></div>
+        <h3 class="proj-name">Air-Gap Data Exchange PoC</h3>
+        <div class="proj-meta">2026 · Built end-to-end in one day</div>
+        <p class="proj-desc">A complete architecture for moving reviewed data between an offline system and a common server — packaging, auth envelopes, and field-level diff review on both ends — with a working sample application and full documentation.</p>
+        <ul class="proj-more">
+          <li>ARINC-style change-set packaging with authentication envelopes</li>
+          <li>File-driven generic UI renderer with editable working copies</li>
+          <li>Architecture deck, file-format spec and demo script shipped same day</li>
+        </ul>
+        <div class="proj-stack"><span>TypeScript</span><span>Vite</span><span>Custom file formats</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 03 SYSTEMS ================= -->
+<section class="section systems" id="systems" data-od-id="section-systems">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <div class="sec-index mono"><span class="bar"></span>03 / ONBOARD SYSTEMS — CAPABILITY STACK</div>
+        <h2 class="sec-title">Five systems,<br>fully integrated.</h2>
+      </div>
+      <p class="sec-note">Select a system to inspect its manifest — the actual tooling behind the projects above, from avionics C to agent orchestration.</p>
+    </div>
+    <div class="sys-grid rv d1" data-od-id="systems-console">
+      <div class="sys-tabs" id="sysTabs" role="tablist" data-od-id="systems-tabs"></div>
+      <div class="sys-panel">
+        <ul class="sys-items" id="sysItems" data-od-id="systems-items"></ul>
+        <div class="sys-media hudscan" data-od-id="systems-media">
+          <img id="sysImg" src="assets/aircraft/sys-agents.jpg" alt="System visual" loading="lazy" decoding="async">
+          <div class="caption mono"><span id="sysCap">SYS-01 — AI &amp; AGENTS</span><span class="cyan">◉ TRACKING</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 04 DOCTRINE ================= -->
+<section class="section" id="doctrine" data-od-id="section-doctrine">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <div class="sec-index mono"><span class="bar"></span>04 / FLIGHT DOCTRINE — HOW I WORK</div>
+        <h2 class="sec-title">Rules that keep<br>systems survivable.</h2>
+      </div>
+      <p class="sec-note">Six operating principles, forged in defense programs and applied daily to AI delivery. Non-negotiable, every engagement.</p>
+    </div>
+    <div class="doc-grid rv d1" data-od-id="doctrine-grid">
+      <div class="doc-card"><div class="doc-id">SPEC</div><h3>Spec before code</h3><p>Every feature starts as a written spec with numbered acceptance criteria and passes through approval gates. Aviation taught me that checklists are not bureaucracy — they are how complex systems stay survivable.</p></div>
+      <div class="doc-card"><div class="doc-id">TDD</div><h3>Tests are the contract</h3><p>TDD by default — EditMode suites in Unity, E2E in the browser, regression packs on platforms. Work is done when the suite is green, not when it looks done.</p></div>
+      <div class="doc-card"><div class="doc-id">HW</div><h3>Verify on real hardware</h3><p>A feature verified on a physical headset, tablet or deployed portal is worth ten verified on a dev machine. I close the loop on the device the user actually holds.</p></div>
+      <div class="doc-card"><div class="doc-id">AUTO</div><h3>Automate the meta-work</h3><p>Weekly reports, cost workbooks, pitch decks, WBS documents — all generated by tooling I built once. Human hours go to decisions, not formatting.</p></div>
+      <div class="doc-card"><div class="doc-id">GATE</div><h3>Autonomy with human gates</h3><p>I run fleets of AI agents, but every merge crosses a human approval gate with a tamper-proof audit trail. Trust the machine to work; verify before it lands.</p></div>
+      <div class="doc-card"><div class="doc-id">SHIP</div><h3>Velocity is a habit</h3><p>Nine feature updates in a day. Three phases of a platform rebuild in a weekend. Sustained, not heroic — the system makes the pace.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="wide-strip hudscan" data-od-id="wide-strip">
+  <img src="assets/aircraft/wide-sortie.jpg" alt="Two Tejas fighters climbing past the airfield control tower" width="2560" height="1395" loading="lazy" decoding="async">
+  <div class="tag mono">LOW PASS — FULL AFTERBURNER</div>
+</div>
+
+<!-- ================= 05 ARCHIVE ================= -->
+<section class="section archive" id="archive" data-od-id="section-archive">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <div class="sec-index mono"><span class="bar"></span>05 / MISSION ARCHIVE — FULL RECORD</div>
+        <h2 class="sec-title">Every sortie<br>on the record.</h2>
+      </div>
+      <p class="sec-note">The complete index — simulation, avionics, robotics, infrastructure and the after-hours hangar.</p>
+    </div>
+    <div class="rv d1" data-od-id="archive-list">
+      <div class="arch-row"><span class="arch-idx">M/01</span><span class="arch-name">Bomb-Drop Trajectory Simulation</span><span class="arch-desc">Weapon-release trajectory playback in FlightGear and Unity driven by real trajectory data.</span><span class="arch-tags">FlightGear · Unity</span></div>
+      <div class="arch-row"><span class="arch-idx">M/02</span><span class="arch-name">Fighter-Jet Sensors Simulation</span><span class="arch-desc">Multi-monitor, multi-window sensor simulation with FlightGear and XLIB on Ubuntu.</span><span class="arch-tags">FlightGear · XLIB · Linux</span></div>
+      <div class="arch-row"><span class="arch-idx">M/03</span><span class="arch-name">Synthetic Terrain</span><span class="arch-desc">Shader development for synthetic terrain generation in FlightGear.</span><span class="arch-tags">GLSL · FlightGear</span></div>
+      <div class="arch-row"><span class="arch-idx">M/04</span><span class="arch-name">Lane Detection Integration</span><span class="arch-desc">Python computer-vision lane detection wired into FlightGear via C/C++.</span><span class="arch-tags">Python · OpenCV · C++</span></div>
+      <div class="arch-row"><span class="arch-idx">M/05</span><span class="arch-name">UDP Video Streaming</span><span class="arch-desc">Screen and window capture encoded with OpenCV and streamed over UDP protocols.</span><span class="arch-tags">C++ · OpenCV · UDP</span></div>
+      <div class="arch-row"><span class="arch-idx">M/06</span><span class="arch-name">Multi-Region Large-Area Display</span><span class="arch-desc">Windows C++ display-wall software with interchangeable touch-driven pages.</span><span class="arch-tags">C++ · Touch UI</span></div>
+      <div class="arch-row"><span class="arch-idx">M/07</span><span class="arch-name">ECFM LRU</span><span class="arch-desc">Test-case generation and component testing for a real-time airworthy unit; Ada integrated with C++ over DLLs and network protocols.</span><span class="arch-tags">Ada · C++ · Avionics</span></div>
+      <div class="arch-row"><span class="arch-idx">M/08</span><span class="arch-name">AUV Software (ECA A9)</span><span class="arch-desc">Autonomous underwater vehicle software on the ROS2 / NAV2 stack.</span><span class="arch-tags">ROS2 · NAV2 · Robotics</span></div>
+      <div class="arch-row"><span class="arch-idx">M/09</span><span class="arch-name">LIDAR Point-Cloud VR</span><span class="arch-desc">Drone-captured LIDAR point clouds brought into real-time VR walkthroughs, with MIT Chennai.</span><span class="arch-tags">Unity · LIDAR · VR</span></div>
+      <div class="arch-row"><span class="arch-idx">M/10</span><span class="arch-name">Self-Hosted LLM Backend</span><span class="arch-desc">Multimodal LLM management backend plus an open-source chat platform with user and model access control, deployed via Docker.</span><span class="arch-tags">Docker · Ollama · LLM Ops</span></div>
+      <div class="arch-row"><span class="arch-idx">M/11</span><span class="arch-name">AI Pair-Programming Rollout</span><span class="arch-desc">Open-source AI agent plugins in VS Code wired to local LLMs — code generation, autocomplete and in-IDE chat for the team.</span><span class="arch-tags">VS Code · Local LLMs</span></div>
+      <div class="arch-row"><span class="arch-idx">M/12</span><span class="arch-name">Self-Hosted Video Conferencing</span><span class="arch-desc">Low-latency Google Meet alternative deployed via Docker for real-time communication.</span><span class="arch-tags">Docker · WebRTC</span></div>
+      <div class="arch-row"><span class="arch-idx">M/13</span><span class="arch-name">MMORPG PC VR Game</span><span class="arch-desc">Building systems, procedural terrain generation and networking modules for a VR MMORPG, with a Canadian PhD researcher.</span><span class="arch-tags">Unity · Networking</span></div>
+      <div class="arch-row"><span class="arch-idx">M/14</span><span class="arch-name">Museum Interactives</span><span class="arch-desc">Puli-Meka turn-based multiplayer strategy game with AI for an archaeological museum, a 4-way multi-user touch table, and a VR 360° annotated tour.</span><span class="arch-tags">Unity · Touch · VR</span></div>
+      <div class="arch-row"><span class="arch-idx">M/15</span><span class="arch-name">AR Sketch (SLAM)</span><span class="arch-desc">AR drawing application anchoring sketches in real-world space with SLAM.</span><span class="arch-tags">ARCore · SLAM</span></div>
+    </div>
+    <div class="lab-strip rv" data-od-id="lab-strip">
+      <div class="lab-badge">The Hangar</div>
+      <div>
+        <div class="name">Plethora</div>
+        <div class="desc">ADHD-aware daily companion — a proactive coaching agent that keeps every task primed with reward, reason and gentle consequences.</div>
+      </div>
+      <div class="stack">Next.js 15 · Neon Postgres · LLM tool-calling</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT / FOOTER ================= -->
+<footer class="contact" id="contact" data-od-id="section-contact">
+  <div class="wrap">
+    <div class="mono rv" data-od-id="contact-kicker">◤ FINAL APPROACH — OPEN CHANNEL</div>
+    <h2 class="rv d1" data-od-id="contact-headline">Cleared for<br><span class="em">takeoff?</span></h2>
+    <div class="contact-row">
+      <div class="rv d2">
+        <p class="contact-copy">Building something that has to work — a simulator, an agent platform, an air-gapped pipeline, an XR product? I lead technical teams that ship verified systems. Tower frequency is always open.</p>
+        <div class="hero-ctas" style="margin-top:30px">
+          <a class="btn solid" href="mailto:erupanc@gmail.com" data-od-id="contact-email-btn" style="background:var(--platinum);color:var(--black);border-color:var(--platinum)">erupanc@gmail.com <span class="arr">→</span></a>
+          <a class="btn ghost" href="https://github.com/RupanRC" target="_blank" rel="noopener" style="border-color:var(--platinum);color:var(--platinum)">GitHub <span class="arr">↗</span></a>
+        </div>
+      </div>
+      <ul class="contact-list rv d3" data-od-id="contact-list">
+        <li><span class="k">Callsign</span><span>RUPAN C.E</span></li>
+        <li><span class="k">Base</span><span>Chennai, India</span></li>
+        <li><span class="k">Squadron</span><span>MicroGenesis TechSoft Pvt Ltd</span></li>
+        <li><span class="k">Phone</span><a href="tel:+918807626297">+91 88076 26297</a></li>
+        <li><span class="k">Resume</span><a href="assets/Rupan_Resume_Jul_2026.pdf" target="_blank" rel="noopener">Rupan_Resume_Jul_2026.pdf</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="wrap footer-inner">
+      <span class="mono">© 2026 RUPAN CHAKKARAVARTHY E — ALL SYSTEMS NOMINAL</span>
+      <span class="mono">PHOTOGRAPHY: INDIAN MOD / IAF (GODL-INDIA) · ASHWIN KUMAR (CC BY-SA 2.0) · UDAYBLR (CC BY-SA 4.0) · ABED ISMAIL</span>
+    </div>
+  </div>
+</footer>
+</main>
+
+<script>
+/* ---------- data: systems console (from data.js source of truth) ---------- */
+const SYSTEMS = [
+  { code:'SYS-01', name:'AI & Agents', img:'assets/aircraft/sys-agents.jpg',
+    items:['Claude stack — Design, Chat, Work, Code','Agentic dev environments — Claude Code, Kimi Code, OpenCode','Multi-agent pipelines & MCP','RAG — RAGFlow, Chroma','NL→SQL — Vanna 2.0','Local LLMs — Ollama','Code knowledge graphs'] },
+  { code:'SYS-02', name:'XR & Simulation', img:'assets/aircraft/sys-skijump.jpg',
+    items:['Unity 3D · C#','MRTK3 · ARCore · ARFoundation','OpenVR · SteamVR · Oculus','Varjo XR-3/4 · Quest · Vive','Leap Motion · Xsens · SenseGlove','FlightGear · Unreal'] },
+  { code:'SYS-03', name:'Real-Time & Avionics', img:'assets/aircraft/sys-avionics.jpg',
+    items:['C · C++ · OpenGL','ARINC 661 displays','Ada embedded integration','Qt · ROS2 · NAV2','GLSL / HLSL shaders','OpenCV · UDP video streaming'] },
+  { code:'SYS-04', name:'Web & Platform', img:'assets/aircraft/sys-platform.jpg',
+    items:['TypeScript · React · Vite','Node.js · Express · SSE','FastAPI · Python services','Tauri v2 desktop apps','SQLite · MySQL · MSSQL','Tailwind · design systems','Auth — scrypt, HMAC, RBAC'] },
+  { code:'SYS-05', name:'Ops & Delivery', img:'assets/aircraft/sys-carrier.jpg',
+    items:['Docker · nginx · WSL','Air-gapped Linux deployment','Git worktree orchestration','TDD · browser automation','WBS / SOW / costing tooling'] },
+];
+
+const sysTabs = document.getElementById('sysTabs');
+const sysItems = document.getElementById('sysItems');
+const sysImg = document.getElementById('sysImg');
+const sysCap = document.getElementById('sysCap');
+
+SYSTEMS.forEach((s, i) => {
+  const b = document.createElement('button');
+  b.className = 'sys-tab' + (i === 0 ? ' active' : '');
+  b.setAttribute('role', 'tab');
+  b.setAttribute('data-od-id', 'sys-tab-' + s.code.toLowerCase());
+  b.innerHTML = '<span class="code">' + s.code + '</span><span class="name">' + s.name + '</span><span class="tick"></span>';
+  b.addEventListener('click', () => selectSystem(i));
+  sysTabs.appendChild(b);
+});
+
+function selectSystem(i) {
+  const s = SYSTEMS[i];
+  sysTabs.querySelectorAll('.sys-tab').forEach((t, j) => t.classList.toggle('active', j === i));
+  sysItems.innerHTML = '';
+  s.items.forEach(it => {
+    const li = document.createElement('li');
+    li.textContent = it;
+    sysItems.appendChild(li);
+  });
+  sysImg.src = s.img;
+  sysImg.alt = s.name + ' — system visual';
+  sysCap.textContent = s.code + ' — ' + s.name.toUpperCase();
+}
+selectSystem(0);
+
+/* ---------- ticker: duplicate track for seamless loop ---------- */
+const track = document.getElementById('tickerTrack');
+track.innerHTML += track.innerHTML;
+
+/* ---------- scroll progress + nav state ---------- */
+const progress = document.getElementById('progress');
+const nav = document.getElementById('nav');
+function onScroll() {
+  const h = document.documentElement;
+  const max = h.scrollHeight - h.clientHeight;
+  progress.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+  nav.classList.toggle('solid', h.scrollTop > 40);
+}
+addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+/* ---------- burger menu ---------- */
+const burger = document.getElementById('burger');
+const navLinks = document.getElementById('navLinks');
+burger.addEventListener('click', () => {
+  nav.classList.toggle('open');
+  navLinks.classList.toggle('open');
+});
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  nav.classList.remove('open');
+  navLinks.classList.remove('open');
+}));
+
+/* ---------- reveal on scroll ---------- */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+/* ---------- hero parallax drift on the jet frame ---------- */
+const jet = document.querySelector('.hero-visual');
+if (jet && matchMedia('(pointer:fine)').matches) {
+  addEventListener('mousemove', e => {
+    const x = (e.clientX / innerWidth - 0.5) * 14;
+    const y = (e.clientY / innerHeight - 0.5) * 10;
+    jet.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0)';
+  }, { passive: true });
+}
+</script>
+</body>
+</html>
