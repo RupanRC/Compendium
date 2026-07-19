@@ -7,7 +7,7 @@ export const profile = {
   tagline: 'From cockpits to agents.',
   summary:
     'Ten years building systems where failure is visible immediately — fighter-jet simulators, ARINC 661 cockpit displays, XR hardware integration. Now applying that same discipline to AI: multi-agent orchestration platforms that take software from spec to merged, tested code with humans on the approval gates.',
-  location: 'Chennai, India',
+  location: 'Bangalore, India',
   email: 'erupanc@gmail.com',
   phone: '+91 8807626297',
   github: 'https://github.com/RupanRC',
